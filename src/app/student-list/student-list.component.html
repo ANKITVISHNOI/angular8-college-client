@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Students List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Operatons</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studentList | async">
+            <td>{{student.firstName}}</td>
+            <td>{{student.lastName}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.phone}}</td>
+            <td>
+                <button (click)="studentDetails(student.id)" class="btn btn-info">Info</button>
+                <button class="btn btn-success" [routerLink]="['/update/', student.id]" style="margin-left: 10px">Edit</button>
+                <button (click)="deleteStudent(student.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
